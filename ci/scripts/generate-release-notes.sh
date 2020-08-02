@@ -1,14 +1,9 @@
 #!/bin/bash
 set -e
 
-source $(dirname $0)/common.sh
-
 version=$( cat version/version )
 
 milestone=${version}
-if [[ $RELEASE_TYPE = "RELEASE" ]]; then
-	milestone=${version%.RELEASE}
-fi
 
 java -jar /github-release-notes-generator.jar \
   --releasenotes.github.username=${GITHUB_USERNAME} \
